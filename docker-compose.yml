@@ -1,0 +1,9 @@
+services:
+  trackest-frontend:
+    image: nginx:alpine
+    container_name: trackest-frontend-app
+    ports:
+      - "8080:80"  # Mengarahkan port 8080 VPS ke port 80 kontainer
+    volumes:
+      - .:/usr/share/nginx/html
+    restart: always

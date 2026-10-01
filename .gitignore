@@ -1,0 +1,5 @@
+# Optional local config backup
+supabase-config.local.js
+*.local.js
+.DS_Store
+Thumbs.db

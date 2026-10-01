@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Trackest Logistics Management System">
+  <title>Trackest | Logistics Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <section id="login-page" class="login-page">
+    <div class="login-shell">
+      <div class="login-brand-panel">
+        <div class="brand-row">
+          <div class="brand-mark">T</div>
+          <div>
+            <div class="brand-name">Trackest</div>
+            <div class="brand-sub">Logistics Management System</div>
+          </div>
+        </div>
+
+        <div class="login-intro">
+          <p class="eyebrow">SHIPMENT OPERATIONS</p>
+          <h1>Know where every shipment stands.</h1>
+          <p>Track shipments, routes and warehouse movement from one workspace.</p>
+        </div>
+
+        <div class="login-points">
+          <div class="login-point">
+            <span class="point-icon" aria-hidden="true">↗</span>
+            <div><strong>Live status</strong><span>Current shipment state at a glance.</span></div>
+          </div>
+          <div class="login-point">
+            <span class="point-icon" aria-hidden="true">◎</span>
+            <div><strong>Traceable history</strong><span>Every tracking event stays in order.</span></div>
+          </div>
+          <div class="login-point">
+            <span class="point-icon" aria-hidden="true">✓</span>
+            <div><strong>Role-based access</strong><span>Access follows your Supabase session.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="login-card">
+        <div class="login-card-head">
+          <span class="login-kicker">Welcome back</span>
+          <h2>Sign in</h2>
+          <p>Use your Trackest account to continue.</p>
+        </div>
+
+        <form id="login-form" class="stack-form">
+          <label>
+            Email
+            <input id="login-email" type="email" autocomplete="username" required placeholder="name@example.com">
+          </label>
+          <label>
+            Password
+            <input id="login-password" type="password" autocomplete="current-password" required placeholder="Enter your password">
+          </label>
+          <button class="primary full login-submit" type="submit">
+            <span>Sign in</span>
+            <span class="button-arrow" aria-hidden="true">→</span>
+          </button>
+          <p id="login-error" class="error-text"></p>
+        </form>
+
+        <div class="login-foot">
+          <span class="secure-dot" aria-hidden="true"></span>
+          <span>Supabase Auth · PostgreSQL RLS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="app-shell" class="app-shell hidden">
+    <aside class="sidebar">
+      <div>
+        <div class="sidebar-brand">
+          <div class="brand-mark small">T</div>
+          <div>
+            <strong>Trackest</strong>
+            <span>Logistics Management</span>
+          </div>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-label">Workspace</div>
+          <nav id="main-nav" class="nav-list" aria-label="Main navigation">
+            <button data-page="dashboard" class="nav-item active">
+              <span class="nav-icon" aria-hidden="true">⌂</span>
+              <span>Dashboard</span>
+            </button>
+            <button data-page="shipments" class="nav-item">
+              <span class="nav-icon" aria-hidden="true">▤</span>
+              <span>Shipments</span>
+            </button>
+            <button data-page="tracking" class="nav-item">
+              <span class="nav-icon" aria-hidden="true">◎</span>
+              <span>Tracking</span>
+            </button>
+            <button data-page="routes" class="nav-item">
+              <span class="nav-icon" aria-hidden="true">↗</span>
+              <span>Routes</span>
+            </button>
+            <button data-page="warehouses" class="nav-item">
+              <span class="nav-icon" aria-hidden="true">⌂</span>
+              <span>Warehouses</span>
+            </button>
+            <button data-page="audit" class="nav-item staff-only">
+              <span class="nav-icon" aria-hidden="true">◫</span>
+              <span>Audit Logs</span>
+            </button>
+          </nav>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-card">
+          <div id="user-avatar" class="avatar">U</div>
+          <div class="user-meta">
+            <strong id="user-name">User</strong>
+            <span id="user-role">role</span>
+          </div>
+        </div>
+        <button id="logout-btn" class="ghost full logout-btn">
+          <span aria-hidden="true">↪</span>
+          <span>Sign out</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-main">
+          <p class="eyebrow">TRACKING WORKSPACE</p>
+          <h2 id="page-title">Dashboard</h2>
+        </div>
+        <div class="topbar-actions">
+          <span id="session-badge" class="session-badge">
+            <span class="status-dot" aria-hidden="true"></span>
+            Authenticated
+          </span>
+        </div>
+      </header>
+
+      <div id="page-container" class="page-container"></div>
+    </main>
+  </section>
+
+  <div id="modal-backdrop" class="modal-backdrop hidden">
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.local.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
